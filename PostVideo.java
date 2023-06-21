@@ -1,23 +1,72 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-public class PostVideo{
+public class PostVideo implements Postavel {
+    private int qtde_videos, tamanho_antes;
     private Video video;
-    private LocalDateTime data_postagem;
-    private Comentario lista_comentarios[];
+    private LocalDateTime data_postagem = LocalDateTime.now();;
+    private ArrayList<Comentario> lista_comentarios = new ArrayList<>();;
 
-    public void PostVideo(){
+    private int qtde_fixados;
+
+    // Criar toString
+    public void PostVideo() {
 
     }
-    
-    public boolean adicionaVideo(){
-        return true;
+
+    // retornar em estado de erro
+    public boolean adicionaVideo(Video new_video) {
+        this.video = new_video;
+        if (this.video != null) {
+            return true;
+        } else {
+            System.out.println("Video não foi criado");
+            return false;
+        }
     }
 
-    public boolean posta(){
-        return true;
+    @Override
+    public boolean posta() {
+        if (this.video != null) {
+            this.data_postagem = LocalDateTime.now();
+            return true;
+        } else {
+            System.out.println("Nenhum vídeo associado");
+            return false;
+        }
     }
 
-    public boolean comenta(){
-        return true;
+    @Override
+    public boolean comenta(String new_texto) {
+        Comentario comentario = new Comentario(new_texto, false);
+        lista_comentarios.add(comentario);
+        if (lista_comentarios.contains(comentario)) {
+            return true;
+        } else {
+            System.out.println("Erro! Seu comentário não foi adicionado");
+            return false;
+        }
+    }
+
+    // public boolean posta() {
+    // try {
+    // if (this.video != null) {
+    // this.data_postagem = LocalDateTime.now();
+    // return true;
+    // } else {
+    // return false;
+    // }
+    // } catch (NullPointerException error) {
+    // System.out.println("error: " + error);
+    // return false;
+    // }
+    // }
+
+    public Video getVideo() {
+        return video;
+    }
+
+    public ArrayList<Comentario> getLista_comentarios() {
+        return lista_comentarios;
     }
 }
