@@ -21,17 +21,19 @@ public class PostFoto implements Postavel {
     }
 
     public boolean adicionaFoto(Foto foto) {
-        this.tamanho_antes = this.fotos.size();
-        this.fotos.add(foto);
-        this.qtde_fotos += 1;
-        if ((this.fotos.size()) > 10) {
+        if ((this.fotos.size()) >= 10) {
             System.out.println("Erro! Limite maximo de fotos excedido.");
             return false;
         }
-        if (this.tamanho_antes == this.fotos.size()) {
-            return false;
-        } else {
-            return true;
+        else{
+            this.tamanho_antes = this.fotos.size();
+            this.fotos.add(foto);
+            this.qtde_fotos += 1;
+            if (this.tamanho_antes == this.fotos.size()) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 
@@ -88,6 +90,15 @@ public class PostFoto implements Postavel {
 
     public LocalDateTime getData_postagem() {
         return data_postagem;
+    }
+
+    public String toString() {
+        String msg = "localização: " + this.localizacao;
+        msg += ("\ncom fotos: " + this.fotos);
+        msg += ("\nquantidade de fotos: " + this.qtde_fotos);
+        msg += ("\nPostada em: " + this.data_postagem);
+        msg += ("\nComentários: " + this.lista_comentarios);
+        return msg;
     }
 
 }

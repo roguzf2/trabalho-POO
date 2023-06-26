@@ -22,6 +22,10 @@ public class Video extends Recurso {
         } else {
             return false;
         }
+    }
 
+    public String toString() {
+        String msg = this.url_recurso;
+        return msg;
     }
 }

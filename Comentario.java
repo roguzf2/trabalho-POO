@@ -28,5 +28,10 @@ public class Comentario{
     public String getTexto() {
         return texto;
     }
+
+    public String toString() {
+        String msg = this.texto;
+        return msg;
+    }
    
 }

@@ -69,4 +69,11 @@ public class PostVideo implements Postavel {
     public ArrayList<Comentario> getLista_comentarios() {
         return lista_comentarios;
     }
+
+    public String toString() {
+        String msg = ("Video: " + this.video);
+        msg += ("\nPostada em: " + this.data_postagem);
+        msg += ("\nComentários: " + this.lista_comentarios);
+        return msg;
+    }
 }
