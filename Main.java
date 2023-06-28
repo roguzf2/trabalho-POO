@@ -2,11 +2,24 @@ import java.time.LocalDateTime;
 
 public class Main {
         public static void main(String[] args) throws InterruptedException {
+                // Tentativa de criação de postagem com texto
+                System.out.println("\nTentativa de criação de postagem com texto");
+                Foto foto_valida2 = new Foto(1440, "foto_valida2.png");
+                try {
+                        PostFoto post_foto_invalida2 = (PostFoto) PostavelFactory.createPostavel("postagem",
+                                        "São Paulo");
+                        post_foto_invalida2.adicionaFoto(foto_valida2);
+                        System.out.println(post_foto_invalida2);
+
+                } catch (Exception e) {
+                        System.out.println("erro = " + e);
+                }
+
                 // Tentativa de postagem com um vídeo atribuido
                 Video video = new Video(60, 20, "video_maneiro.mp4");
                 PostVideo post_video = (PostVideo) PostavelFactory.createPostavel("postvideo", null);
                 post_video.adicionaVideo(video);
-                System.out.println("Tentativa de postagem com um vídeo atribuido:");
+                System.out.println("\nTentativa de postagem com um vídeo atribuido:");
                 System.out.println(post_video);
 
                 // Tentativa de postagem sem vídeo
@@ -39,12 +52,18 @@ public class Main {
 
                 // Tentativa de criação de comentário em uma postagem com foto
                 System.out.println("\nTentativa de criação de comentário em uma postagem com foto");
-                post_foto_5.comenta("foto muito bacana!");
+                post_foto_5.comenta("foto muito bacana!", false);
+                System.out.println(post_foto_5);
+
+                // Testando atualizar data_postagem
+                Thread.sleep(2000);
+                System.out.println("\nTentativa de atualizar data_postagem");
+                post_foto_5.posta();
                 System.out.println(post_foto_5);
 
                 // Tentativa de criação de comentário em uma postagem com vídeo
                 System.out.println("\nTentativa de criação de comentário em uma postagem com vídeo");
-                post_video.comenta("video muito doidão! Curti :) ");
+                post_video.comenta("video muito doidão! Curti :) ", false);
                 System.out.println(post_video);
 
                 // Tentativa de criação de vídeo inválido
@@ -60,27 +79,17 @@ public class Main {
                 PostFoto post_foto_invalida = (PostFoto) PostavelFactory.createPostavel("postfoto", "Curitiba");
                 post_foto_invalida.adicionaFoto(foto_invalida);
                 System.out.println(post_foto_invalida);
-                // Foto foto = new Foto(1360, "abacate.jpg");
-                // Foto foto2 = new Foto(1360, "abacate_2.jpg");
-                // System.out.println(foto.url_recurso);
-                // System.out.println(foto.validaUrlRecurso("abacate.jpg"))
-                // System.out.println(video);
-                // Comentario comentario = new Comentario("salve cambada", true);
-                // PostVideo post_video = new PostVideo();
-                // post_video.comenta("video bem bacana");
-                // post_video.adicionaVideo(video);
-                // System.out.println(post_video);
-                // PostFoto post_foto = new PostFoto("Rio de Janeiro");
-                // post_foto.adicionaFoto(foto);
-                // post_foto.adicionaFoto(foto2);
-                // post_foto.comenta("maneiro esse abacate ai");
-                // System.out.println(post_foto);
-                // PostVideo obj = (PostVideo) PostavelFactory.createPostavel("postvideo",
-                // null);
-                // obj.adicionaVideo(video);
-                // System.out.println(obj);
+
+                // Tentativa de criar um comentário fixado
+                Video video_2 = new Video(60, 20, "video_maneiro.mp4");
+                PostVideo post_video_2 = (PostVideo) PostavelFactory.createPostavel("postvideo", null);
+                post_video_2.adicionaVideo(video_2);
+                post_video_2.comenta("Comentário fixado", true);
+                post_video_2.comenta("Comentário não fixado", false);
+                post_video_2.comenta("Comentário fixado 2", true);
+                System.out.println("\nTentativa de criar um comentário fixado:");
+                System.out.println(post_video_2);
 
         }
-        // Testar data_postagem
         // Testar Fixado
 }

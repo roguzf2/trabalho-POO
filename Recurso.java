@@ -4,4 +4,8 @@ public abstract class Recurso {
     protected static int prox_ID;
 
     public abstract boolean validaUrlRecurso(String url_recurso);
+
+    public String getUrl_recurso() {
+        return url_recurso;
+    }
 }

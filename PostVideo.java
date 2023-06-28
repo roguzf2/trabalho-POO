@@ -37,9 +37,18 @@ public class PostVideo implements Postavel {
     }
 
     @Override
-    public boolean comenta(String new_texto) {
-        Comentario comentario = new Comentario(new_texto, false);
-        lista_comentarios.add(comentario);
+    public boolean comenta(String new_texto, boolean new_fixado) {
+        Comentario comentario = new Comentario(new_texto, new_fixado);
+        if (comentario.isFixado()) {
+            if (lista_comentarios.size() == 0) {
+                lista_comentarios.add(comentario);
+            } else {
+                lista_comentarios.add(0 + this.qtde_fixados, comentario);
+            }
+            this.qtde_fixados += 1;
+        } else {
+            lista_comentarios.add(comentario);
+        }
         if (lista_comentarios.contains(comentario)) {
             return true;
         } else {
@@ -47,20 +56,6 @@ public class PostVideo implements Postavel {
             return false;
         }
     }
-
-    // public boolean posta() {
-    // try {
-    // if (this.video != null) {
-    // this.data_postagem = LocalDateTime.now();
-    // return true;
-    // } else {
-    // return false;
-    // }
-    // } catch (NullPointerException error) {
-    // System.out.println("error: " + error);
-    // return false;
-    // }
-    // }
 
     public Video getVideo() {
         return video;
@@ -74,6 +69,7 @@ public class PostVideo implements Postavel {
         String msg = ("Video: " + this.video);
         msg += ("\nPostada em: " + this.data_postagem);
         msg += ("\nComentários: " + this.lista_comentarios);
+        msg += ("\nQuantidade de comentários fixados: " + this.qtde_fixados);
         return msg;
     }
 }
