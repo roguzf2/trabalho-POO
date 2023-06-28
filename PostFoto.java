@@ -11,7 +11,6 @@ public class PostFoto implements Postavel {
     private LocalDateTime data_postagem = LocalDateTime.now();
     private ArrayList<Comentario> lista_comentarios = new ArrayList<>();
 
-    // Criar toString
     public PostFoto(String localizacao) {
         if (qtde_fotos > 10) {
             System.out.println("Erro! Limite maximo de fotos excedido.");

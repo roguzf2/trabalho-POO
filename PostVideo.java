@@ -9,7 +9,6 @@ public class PostVideo implements Postavel {
 
     private int qtde_fixados;
 
-    // Criar toString
     public void PostVideo() {
 
     }
