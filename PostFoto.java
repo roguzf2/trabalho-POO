@@ -1,8 +1,5 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Date;
 
 public class PostFoto implements Postavel {
     private int qtde_fotos, tamanho_antes;

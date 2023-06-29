@@ -1,7 +1,6 @@
-import java.time.LocalDateTime;
-
 public class Main {
         public static void main(String[] args) throws InterruptedException {
+
                 // Tentativa de criação de postagem com texto
                 System.out.println("\nTentativa de criação de postagem com texto");
                 Foto foto_valida2 = new Foto(1440, "foto_valida2.png");
@@ -11,7 +10,7 @@ public class Main {
                         post_foto_invalida2.adicionaFoto(foto_valida2);
                         System.out.println(post_foto_invalida2);
 
-                } catch (Exception e) {
+                } catch (NullPointerException e) {
                         System.out.println("erro = " + e);
                 }
 
@@ -91,5 +90,4 @@ public class Main {
                 System.out.println(post_video_2);
 
         }
-        // Testar Fixado
 }
