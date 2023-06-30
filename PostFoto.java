@@ -57,7 +57,6 @@ public class PostFoto implements Postavel {
         }
     }
 
-    // retornar em estado de erro
     @Override
     public boolean posta() {
         if (fotos.size() >= 1 && fotos.size() <= 10) {

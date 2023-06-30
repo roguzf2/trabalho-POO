@@ -3,14 +3,15 @@ public class Video extends Recurso {
     private int duracao;
 
     public Video(int new_frame_rate, int new_duracao, String new_url) {
-        if (validaUrlRecurso(new_url) ==  true) {
+        if (validaUrlRecurso(new_url) == true) {
             this.frame_rate = new_frame_rate;
             this.duracao = new_duracao;
             this.url_recurso = new_url;
+            this.ID += prox_ID;
         } else {
             System.out.println("Video com url inválida");
         }
-        
+
     }
 
     @Override

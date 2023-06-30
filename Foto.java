@@ -5,6 +5,7 @@ public class Foto extends Recurso {
         if (validaUrlRecurso(new_url) == true) {
             this.resolucao = new_resolucao;
             this.url_recurso = new_url;
+            this.ID += prox_ID;
         } else {
             System.out.println("Foto com url inválida");
         }
